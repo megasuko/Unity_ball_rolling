@@ -9,13 +9,13 @@ public class SceneController : MonoBehaviour
         switch (level)
         {
             case "Easy":
-                SceneManager.LoadScene("MainScene");
+                SceneManager.LoadScene("EasyScene");
                 break;
             case "Hard":
-                SceneManager.LoadScene("MainScene");
+                SceneManager.LoadScene("HardScene");
                 break;
             default:
-                SceneManager.LoadScene("MainScene");
+                SceneManager.LoadScene("TitleScene");
                 break;
         }
     }

@@ -32,6 +32,11 @@ public class ResultController : MonoBehaviour
         itemText.text = "item : " + itemScore.ToString();
         switch (totalScore / 100)
         {
+            case 11:
+            case 10:
+            case 9:
+                rankText.text = "X";
+                break;
             case 8:
                 rankText.text = "SSS";
                 break;

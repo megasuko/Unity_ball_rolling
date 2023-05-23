@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
     public Slider comboSlider;
     [SerializeField] public DataManager dataManager;        // データ管理のクラス
     public GameObject SceneController;
+    public static List<string> dataStrs;                          // 作成するcsvファイルの中身
+
 
     void Start()
     {
@@ -50,6 +53,7 @@ public class PlayerController : MonoBehaviour
         maxcombo = 0;
         hit = 0;
         SceneController = GameObject.Find("SceneController");
+        dataStrs = new List<String>();                      // csvファイルの中身を初期化
     }
 
     void FixedUpdate()
@@ -105,7 +109,7 @@ public class PlayerController : MonoBehaviour
             clearFlag = true;               // クリアフラグを立てる
             SceneController.GetComponent<SceneController>().ResultFade();
         }
-        dataManager.UpdateData(score.ToString() + "," + DateTime.Now.ToString("yyyyMMddHHmmss"));
+        UpdateData(SceneManager.GetActiveScene().name + "," + item.ToString() + "," + score.ToString() + "," + hit.ToString() + "," + combo.ToString() + "," + maxcombo.ToString() + "," + playTime.ToString() + "," + DateTime.Now.ToString("yyyyMMddHHmmss"));
         // csvファイルに書き込むデータを追加
     }
 
@@ -127,5 +131,10 @@ public class PlayerController : MonoBehaviour
                 ComboObject.SetActive(false);
             }
         }
+    }
+
+    public void UpdateData(string dataStr)
+    {
+        dataStrs.Add(dataStr);
     }
 }
