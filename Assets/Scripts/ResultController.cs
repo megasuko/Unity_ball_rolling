@@ -29,9 +29,12 @@ public class ResultController : MonoBehaviour
         comboText.text = "Combo Bonus : " + comboBonus.ToString();
         TimeText.text = "Time Bonus : " + timeBonus.ToString();
         scoreText.text = "Total Score : " + totalScore.ToString();
-        itemText.text = "item : " + itemScore.ToString();
+        itemText.text = "Item : " + itemScore.ToString();
         switch (totalScore / 100)
         {
+            case 14:
+            case 13:
+            case 12:
             case 11:
             case 10:
             case 9:
